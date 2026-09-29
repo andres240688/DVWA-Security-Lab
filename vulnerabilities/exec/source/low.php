@@ -4,6 +4,9 @@ if( isset( $_POST[ 'Submit' ]  ) ) {
 	// Get input
 	$target = $_REQUEST[ 'ip' ];
 
+	// Sanitización: Escapar argumentos para evitar inyección de comandos
+    	$target = escapeshellarg( $target );
+
 	// Determine OS and execute the ping command.
 	if( stristr( php_uname( 's' ), 'Windows NT' ) ) {
 		// Windows
